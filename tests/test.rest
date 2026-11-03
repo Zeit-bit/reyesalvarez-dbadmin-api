@@ -1,0 +1,25 @@
+# Get api status
+GET http://localhost:3000/api/status
+
+### Get users
+GET http://localhost:3000/api/users
+
+### Get user by id
+GET http://localhost:3000/api/users/1
+
+### Get producto by id
+GET http://localhost:3000/api/producto/1
+
+### Get all productos
+GET http://localhost:3000/api/productos
+
+### POST create producto
+POST http://localhost:3000/api/producto/
+Content-Type: application/json 
+
+{
+  "nombre": "Producto de prueba",
+  "precio": 200.00,
+  "stock": 10,
+  "categoriaId": 1
+}
