@@ -14,6 +14,7 @@ GET http://localhost:3000/api/producto/1
 GET http://localhost:3000/api/productos
 
 ### POST create producto
+# @name createProducto
 POST http://localhost:3000/api/producto/
 Content-Type: application/json 
 
@@ -23,3 +24,17 @@ Content-Type: application/json
   "stock": 10,
   "categoriaId": 1
 }
+
+### PUT update the created producto (expected: 200 with updated producto)
+PUT http://localhost:3000/api/producto/{{createProducto.response.body.$.producto.productoId}}
+Content-Type: application/json
+
+{
+  "nombre": "Producto actualizado",
+  "precio": 250.00,
+  "stock": 15,
+  "categoriaId": 1
+}
+
+### DELETE the created producto (expected: 204 with no body)
+DELETE http://localhost:3000/api/producto/{{createProducto.response.body.$.producto.productoId}}

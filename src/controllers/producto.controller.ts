@@ -23,3 +23,24 @@ export const createProducto = async (req: Request, res: Response) => {
     const producto: Producto = await productoRepository.create(productoData);
     return res.status(201).json({ producto });
 }
+
+export const updateProducto = async (req: Request, res: Response) => {
+    const productoData: Partial<Producto> = req.body;
+    const producto = await productoRepository.update(Number(req.params.id), productoData);
+
+    if (!producto) {
+        return res.status(404).json({ message: "Producto no encontrado" });
+    }
+
+    return res.json({ producto });
+}
+
+export const deleteProducto = async (req: Request, res: Response) => {
+    const deleted = await productoRepository.delete(Number(req.params.id));
+
+    if (!deleted) {
+        return res.status(404).json({ message: "Producto no encontrado" });
+    }
+
+    return res.status(204).send();
+}
